@@ -35,42 +35,46 @@ const imagesArray = [
     {
         image:"01.webp",
         title:"Spiderman",
-        description:"",
+        description:"Explore a new chapter in Marvel's Spider-Man universe as a more experienced Peter Parker. Starring one of the world's most iconic Super Heroes, Marvel's Spider-Man features the acrobatic abilities.",
     },
     {
         image:"02.webp",
-        title:"",
-        description:"",
+        title:"Ratchet & Clank",
+        description:"Ratchet & Clank is a series of action platformer and third-person shooter video games. The franchise was created and developed by Insomniac Games and published by Sony Interactive Entertainment for PlayStation consoles",
     },
     {
         image:"03.webp",
-        title:"",
-        description:"",
+        title:"Fortnite",
+        description:"Bleah",
     },
     {
         image:"04.webp",
-        title:"",
-        description:"",
+        title:"Stray",
+        description:"Stray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly.",
     },
     {
         image:"05.webp",
-        title:"",
-        description:"",
+        title:"Marvel Avengers game",
+        description:"Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth. His squad of superheroes put their minds together to accomplish the task.",
     } 
 ]
 
-//Creiamo dinamicamente i div con le immagini del carosello
+// Creiamo dinamicamente i div con le immagini del carosello
 let itemsContent = ``;
 let itemsThumbsnails = ``;
 
 for(let i = 0; i < imagesArray.length; i++){
-    itemsContent += `<div class="item">
-        <img src="./img/${imagesArray[i]}">
-    </div>`;
+    itemsContent += `
+    <div class="item">
+        <img src="./img/${imagesArray[i].image}">
+    </div>
+    <div class="item-description">
+        <h2>${imagesArray[i].title}</h2>
+        <p>${imagesArray[i].description}</p>
+    </div>`
 
-    itemsThumbsnails += `<div class="thumb"><img src="./img/${imagesArray[i]}">
-    </div>`;
-}
+    itemsThumbsnails += `<div class="thumb"><img src="./img/${imagesArray[i].image}"></div>`;
+ }
 
 //inseriamo le immagini nel div che le deve contenere
 const itemsSlider = document.querySelector('.item-slider');
@@ -96,6 +100,22 @@ circles[itemActive].classList.add('active');
 
 const thumbnails = document.getElementsByClassName(`thumb`)
 thumbnails[itemActive].classList.add(`active`);
+
+for( let i=0; i < thumbnails.length; i++){
+    let thumb = thumbnails[i];
+    thumb.addEventListener('click', function(){
+
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    thumbnails[itemActive].classList.remove('active');
+
+    itemActive = i
+
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+    thumbnails[itemActive].classList.add('active');
+    })
+}
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');

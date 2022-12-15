@@ -30,6 +30,7 @@
     width: 100%;
     height: calc(100% / 5);
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .thumb img{
@@ -43,6 +44,16 @@
 
 .item{
     display: none;
+    position: relative;
+}
+
+.item-description{
+    position: absolute;
+    bottom: 20px;
+    left: 30%;
+    color: white;
+    background-color: rgba(174, 174, 174, 0.509);
+    padding: 10px;
 }
 
 .item-slider, .item, img{
